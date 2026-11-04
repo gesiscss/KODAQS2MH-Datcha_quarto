@@ -216,12 +216,12 @@ LDAvis = function(to_select, json_file) {
             return d.x;
         }); //d3.extent returns min and max of an array
         var xdiff = xrange[1] - xrange[0],
-        xpad = 0.05;
+        xpad = 0.25;
         var yrange = d3.extent(mdsData, function(d) {
             return d.y;
         });
         var ydiff = yrange[1] - yrange[0],
-        ypad = 0.05;
+        ypad = 0.25;
 
 	if (xdiff > ydiff) {
             var xScale = d3.scale.linear()

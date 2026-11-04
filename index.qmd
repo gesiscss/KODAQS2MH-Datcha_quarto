@@ -992,6 +992,9 @@ generate_topic_models_for_range <- function(dataset, dataset_name, folder_prefix
       }
     }
 
+    js_file <- file.path(vis_dir, "ldavis.js")
+    writeLines(gsub("pad = 0.05;", "pad = 0.25;", readLines(js_file, warn = FALSE), fixed = TRUE), js_file)
+
     # Convert absolute asset paths to relative ones so the iframe loads locally
     html_file <- file.path(vis_dir, "index.html")
     if (file.exists(html_file)) {
@@ -1617,6 +1620,9 @@ generate_topic_models_for_range_add <- function(dataset, dataset_name, folder_pr
     }
 
     LDAvis::serVis(json, out.dir = vis_dir, open.browser = FALSE, selfcontained = TRUE)
+
+    js_file <- file.path(vis_dir, "ldavis.js")
+    writeLines(gsub("pad = 0.05;", "pad = 0.25;", readLines(js_file, warn = FALSE), fixed = TRUE), js_file)
 
     html_file <- file.path(vis_dir, "index.html")
     if (file.exists(html_file)) {
